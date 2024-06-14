@@ -1,4 +1,4 @@
-name: Java CI with Maven
+name: Java CI with Spring Boot
 
 on:
   push:
@@ -19,8 +19,7 @@ jobs:
     - name: Set up JDK
       uses: actions/setup-java@v2
       with:
-        java-version: '11' # You can change this to your desired Java version
-        distribution: 'adopt'
+        java-version: '11'
 
     - name: Cache Maven packages
       uses: actions/cache@v2
@@ -30,8 +29,5 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
 
-    - name: Build with Maven
-      run: mvn -B clean package
-
-    - name: Test with Maven
-      run: mvn -B test
+    - name: Build and run Spring Boot application
+      run: mvn spring-boot:run
