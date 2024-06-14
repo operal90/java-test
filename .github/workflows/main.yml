@@ -30,5 +30,8 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-maven-
 
-    - name: Build and run Spring Boot application
+    - name: Build and install dependencies
+      run: mvn clean install
+
+    - name: Run Spring Boot application
       run: mvn spring-boot:run
